@@ -1,0 +1,26 @@
+# Wadhwa Properties - Environment Configuration Template
+# Copy this file to .env and fill in your actual values
+
+# Email Configuration (Required for email functionality)
+# Use Gmail App Password, NOT your regular Gmail password
+EMAIL_USER=your-gmail@gmail.com
+EMAIL_PASS=your-gmail-app-password
+OWNER_EMAIL=wadhwaproperties16@gmail.com
+
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# CORS Origins (comma-separated)
+CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:5000,http://127.0.0.1:5000
+
+# Instructions:
+# 1. Copy this file to .env
+# 2. Replace EMAIL_USER with your Gmail address
+# 3. Replace EMAIL_PASS with your Gmail App Password
+# 4. To get Gmail App Password:
+#    - Go to Google Account settings
+#    - Enable 2-factor authentication
+#    - Generate App Password for "Mail"
+#    - Use that 16-character password here
+# 5. Restart the server after making changes
