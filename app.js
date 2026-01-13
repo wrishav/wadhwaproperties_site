@@ -163,8 +163,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function updateScrollProgressColor() {
-            // Dark theme: cyan gradient
-            progressBar.style.background = 'linear-gradient(90deg, #6366f1, #818cf8)';
+            // Neo-Modern theme: Electric Blue to Purple
+            progressBar.style.background = 'linear-gradient(90deg, #3b82f6, #8b5cf6)';
+            progressBar.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.8)';
         }
 
         window.addEventListener('scroll', updateScrollProgress);
@@ -787,8 +788,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Console welcome message
-    console.log('%c🏠 Welcome to Wadhwa Properties!', 'color: #6366f1; font-size: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);');
-    console.log('%c✨ Dark Modern Theme - Cyan & Purple', 'color: #6366f1; font-size: 14px; font-weight: bold;');
+    console.log('%c🏠 Welcome to Wadhwa Properties!', 'color: #3b82f6; font-size: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);');
+    console.log('%c🚀 Neo-Modern Theme - Electric Blue & Glass', 'color: #8b5cf6; font-size: 14px; font-weight: bold;');
     console.log('%c📞 Serving Faridabad since 1999 | Call: +91 98106 23803', 'color: #b8b9c0; font-size: 12px;');
 
     // Performance monitoring

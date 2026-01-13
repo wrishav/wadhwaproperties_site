@@ -1,0 +1,330 @@
+/* NEO-MODERN REAL ESTATE THEME */
+/* Aesthetic: Deep Slate, Electric Gradients, Glassmorphism */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Core Palette */
+    --neo-bg-dark: #0f172a;
+    /* Slate 900 */
+    --neo-bg-darker: #020617;
+    /* Slate 950 */
+    --neo-primary: #3b82f6;
+    /* Blue 500 */
+    --neo-accent: #8b5cf6;
+    /* Violet 500 */
+    --neo-success: #10b981;
+    /* Emerald 500 */
+
+    /* Text */
+    --neo-text-main: #f8fafc;
+    /* Slate 50 */
+    --neo-text-muted: #94a3b8;
+    /* Slate 400 */
+
+    /* Glass & Borders */
+    --neo-glass: rgba(30, 41, 59, 0.7);
+    --neo-glass-hover: rgba(51, 65, 85, 0.8);
+    --neo-border: rgba(148, 163, 184, 0.1);
+    --neo-border-glow: rgba(59, 130, 246, 0.5);
+
+    /* Gradients */
+    --neo-gradient-main: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --neo-gradient-glow: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    --neo-gradient-text: linear-gradient(to right, #60a5fa, #c084fc);
+
+    /* Effects */
+    --neo-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    --neo-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+    --neo-radius: 24px;
+}
+
+body {
+    background-color: var(--neo-bg-dark) !important;
+    color: var(--neo-text-main) !important;
+    font-family: 'Outfit', sans-serif !important;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%) !important;
+    background-attachment: fixed !important;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.nav-brand,
+.hero-title {
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: -0.02em;
+}
+
+/* Navbar - Floating Glass Pill */
+.navbar {
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--neo-border) !important;
+    padding: 15px 0 !important;
+}
+
+.navbar.scrolled {
+    background: rgba(2, 6, 23, 0.9) !important;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
+    box-shadow: var(--neo-shadow) !important;
+}
+
+.company-name {
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    background: var(--neo-gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+    font-weight: 500 !important;
+    color: var(--neo-text-muted) !important;
+    transition: all 0.3s ease !important;
+    padding: 8px 16px !important;
+    border-radius: 12px !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.nav-link::after {
+    display: none !important;
+    /* Remove underline style */
+}
+
+.nav-call-btn {
+    background: var(--neo-gradient-main) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 10px 28px !important;
+    font-weight: 600 !important;
+    box-shadow: var(--neo-glow) !important;
+}
+
+.nav-call-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Hero Section */
+.hero {
+    background: transparent !important;
+    padding-top: 160px !important;
+}
+
+.hero-title {
+    font-size: 4.5rem !important;
+    line-height: 1.1 !important;
+    font-weight: 800 !important;
+    margin-bottom: 24px !important;
+}
+
+.gradient-text {
+    background: var(--neo-gradient-text) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+}
+
+.hero-description {
+    font-size: 1.25rem !important;
+    color: var(--neo-text-muted) !important;
+    font-weight: 300 !important;
+    max-width: 600px !important;
+    line-height: 1.7 !important;
+}
+
+.badge {
+    background: rgba(59, 130, 246, 0.1) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    color: #60a5fa !important;
+    border-radius: 50px !important;
+    padding: 6px 16px !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Modern Cards */
+.service-card,
+.stat-card,
+.benefit-tile,
+.testimonial-card,
+.contact-method,
+.contact-form {
+    background: var(--neo-glass) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--neo-border) !important;
+    border-radius: var(--neo-radius) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.service-card:hover,
+.benefit-tile:hover,
+.stat-card:hover {
+    transform: translateY(-8px) !important;
+    background: var(--neo-glass-hover) !important;
+    border-color: rgba(139, 92, 246, 0.3) !important;
+    box-shadow: var(--neo-shadow), 0 0 20px rgba(139, 92, 246, 0.15) !important;
+}
+
+/* Icons & Graphics */
+.service-icon,
+.tile-icon {
+    background: var(--neo-gradient-glow) !important;
+    color: #60a5fa !important;
+    border-radius: 16px !important;
+    width: 70px !important;
+    height: 70px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 2rem !important;
+    margin-bottom: 24px !important;
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg) !important;
+    background: var(--neo-gradient-main) !important;
+    color: white !important;
+}
+
+/* Section Headers */
+.section-header h2 {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+}
+
+.section-header h2::after {
+    background: var(--neo-gradient-main) !important;
+    height: 4px !important;
+    width: 80px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Stats */
+.stat-number {
+    background: var(--neo-gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800 !important;
+    font-size: 3rem !important;
+}
+
+/* Form Elements */
+.form-control {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid var(--neo-border) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    padding: 16px !important;
+    font-size: 1rem !important;
+}
+
+.form-control:focus {
+    border-color: var(--neo-primary) !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+}
+
+.form-label {
+    color: var(--neo-text-muted) !important;
+    font-weight: 500 !important;
+    margin-bottom: 8px !important;
+}
+
+.form-submit-btn {
+    background: var(--neo-gradient-main) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: var(--neo-glow) !important;
+}
+
+.form-submit-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6) !important;
+}
+
+/* Footer */
+.footer {
+    background: var(--neo-bg-darker) !important;
+    border-top: 1px solid var(--neo-border) !important;
+    padding-top: 80px !important;
+}
+
+.footer h4 {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+/* Scroll Progress */
+.scroll-progress-bar {
+    background: var(--neo-gradient-main) !important;
+    height: 4px !important;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8) !important;
+}
+
+/* Building SVG Overrides */
+.building-main rect {
+    stroke: #60a5fa !important;
+    fill: rgba(15, 23, 42, 0.8) !important;
+}
+
+.window {
+    fill: #8b5cf6 !important;
+}
+
+.floating-icon circle {
+    fill: #3b82f6 !important;
+}
+
+/* Area Tags */
+.area-tag {
+    background: rgba(30, 41, 59, 0.5) !important;
+    border: 1px solid var(--neo-border) !important;
+    color: var(--neo-text-muted) !important;
+    border-radius: 50px !important;
+}
+
+.area-tag:hover {
+    background: var(--neo-gradient-main) !important;
+    color: white !important;
+    border-color: transparent !important;
+    box-shadow: var(--neo-glow) !important;
+}
+
+/* Logo Styles */
+/* Logo Styles */
+.nav-logo-img {
+    height: 65px;
+    /* Increased from 45px */
+    width: auto;
+    margin-right: 15px;
+    border-radius: 8px;
+    /* Optional: Add a subtle glow to the logo */
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.1);
+}
