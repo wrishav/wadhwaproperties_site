@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Connection Test</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EmailJS Connection Test</h1>
+    <p>Use this tool to verify your EmailJS credentials are working correctly.</p>
+
+    <div class="card">
+        <div class="form-group">
+            <label>Public Key</label>
+            <input type="text" id="publicKey" value="sFj3v2V-DlQzMZeao" placeholder="e.g. user_xxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label>Service ID</label>
+            <input type="text" id="serviceId" value="service_xqn2pos" placeholder="e.g. service_xxxxxxxx">
+        </div>
+        <div class="form-group">
+            <label>Template ID</label>
+            <input type="text" id="templateId" value="template_r3v1xjw" placeholder="e.g. template_xxxxxxxx">
+        </div>
+        <button onclick="testEmail()">Send Test Email</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div class="card">
+        <h3>Troubleshooting Tips</h3>
+        <ul>
+            <li><strong>422 Error ("The recipients address is corrupted"):</strong> Go to your EmailJS Dashboard > Email
+                Templates > Open your template. In the "To Email" field, <strong>remove
+                    <code>{{to_email}}</code></strong> and type your email address (e.g.,
+                <code>wadhwaproperties16@gmail.com</code>) directly.
+            </li>
+            <li><strong>400 Error:</strong> Usually means incorrect Public Key or Service ID.</li>
+            <li><strong>412 Error:</strong> Usually means the Public Key is disabled or incorrect.</li>
+        </ul>
+    </div>
+
+    <script>
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = type;
+            status.style.display = 'block';
+        }
+
+        async function testEmail() {
+            const publicKey = document.getElementById('publicKey').value;
+            const serviceId = document.getElementById('serviceId').value;
+            const templateId = document.getElementById('templateId').value;
+
+            if (!publicKey || !serviceId || !templateId) {
+                showStatus('Please fill in all fields', 'error');
+                return;
+            }
+
+            showStatus('Sending...', 'info');
+
+            try {
+                // Initialize
+                emailjs.init(publicKey);
+
+                // Send
+                const response = await emailjs.send(serviceId, templateId, {
+                    from_name: 'Test User',
+                    from_email: 'test@example.com',
+                    from_phone: '+91 98765 43210',
+                    service_type: 'Property Purchase',
+                    message: 'This is a test message. If you see this, all details are working!'
+                });
+
+                console.log('SUCCESS!', response.status, response.text);
+                showStatus('✅ Email sent successfully! Check your inbox.', 'success');
+            } catch (error) {
+                console.error('FAILED...', error);
+                showStatus('❌ Error: ' + JSON.stringify(error), 'error');
+            }
+        }
+    </script>
+</body>
+
+</html>

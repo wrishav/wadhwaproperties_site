@@ -4,10 +4,10 @@ A modern, responsive real estate website for Wadhwa Properties, serving Faridaba
 
 ## Features
 
-- 🏠 **Modern Design**: Beautiful, responsive design with Royal Blue & Emerald Teal color scheme
+- 🏠 **Modern Design**: Beautiful, responsive design with dark purple theme
 - 📱 **Mobile-First**: Optimized for all devices
-- 🌙 **Dark/Light Theme**: Toggle between themes
-- 📧 **Contact Form**: Integrated email functionality
+- 🌙 **Dark Theme**: Sleek dark mode with purple accents
+- 📧 **Contact Form**: Integrated EmailJS functionality
 - 🗺️ **Google Maps Integration**: Office location with embedded map
 - 💬 **WhatsApp Integration**: Direct WhatsApp contact buttons
 - 📞 **Click-to-Call**: One-tap phone calling
@@ -74,15 +74,17 @@ The server will start on `http://localhost:3000`
 ## File Structure
 
 ```
-wadhwa-properties-final/
-├── server.js          # Express.js backend server
-├── app.js            # Frontend JavaScript with enhanced features
-├── index.html        # Main website HTML
-├── style.css         # CSS styles with modern design
-├── package.json      # Node.js dependencies
-├── .env              # Environment variables (create from template)
-├── env-template.txt  # Environment configuration template
-└── README.md         # This file
+wadhwa-properties-main/
+├── server.js           # Express.js backend server
+├── app.js             # Frontend JavaScript with enhanced features
+├── index.html         # Main website HTML
+├── style.css          # Main CSS styles with modern design
+├── custom-theme.css   # Dark theme overrides
+├── hero-redesign.css  # Split-screen hero with animated building
+├── package.json       # Node.js dependencies
+├── .env               # Environment variables (create from .env.example)
+├── .gitignore         # Git ignore rules
+└── README.md          # This file
 ```
 
 ## Features Breakdown

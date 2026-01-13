@@ -1,8 +1,20 @@
 // Wadhwa Properties - Enhanced Interactive Features with Updated Color Scheme
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Initialize EmailJS
+    try {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init('sFj3v2V-DlQzMZeao');
+            console.log('EmailJS initialized');
+        } else {
+            console.error('EmailJS library not loaded. Check your internet connection or ad blocker.');
+            showEnhancedNotification('Email service unavailable. Please call us directly.', 'error');
+        }
+    } catch (e) {
+        console.error('EmailJS initialization failed:', e);
+    }
+
     // Initialize all enhancements
-    initTheme();
     initScrollProgress();
     initNewNavigation();
     initEnhancedAnimations();
@@ -13,9 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     initMicroInteractions();
     initScrollAnimations();
     initBackToTop();
-
-    // Theme removed - dark mode only
-    // No theme toggle functionality needed
 
     // NEW NAVIGATION FUNCTIONALITY
     function initNewNavigation() {
@@ -214,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Form submission with backend integration
+        // Form submission with EmailJS integration
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
@@ -234,8 +243,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
             const submitBtn = contactForm.querySelector('.form-submit-btn');
             const originalText = submitBtn.innerHTML;
 
@@ -245,23 +252,26 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.classList.add('loading');
 
             try {
-                // Dynamic API URL based on current location
-                const apiUrl = window.location.origin === 'http://localhost:5000'
-                    ? 'http://localhost:3000/api/contact'
-                    : '/api/contact';
+                // Prepare template parameters for EmailJS
+                const templateParams = {
+                    from_name: contactForm.querySelector('#name').value,
+                    from_phone: contactForm.querySelector('#phone').value,
+                    from_email: contactForm.querySelector('#email').value || 'Not provided',
+                    service_type: contactForm.querySelector('#service').value || 'Not specified',
+                    message: contactForm.querySelector('#message').value || 'No message provided'
+                };
 
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_xqn2pos',      // Your EmailJS service ID
+                    'template_r3v1xjw',     // Your EmailJS template ID
+                    templateParams
+                );
 
-                const result = await response.json();
+                console.log('EmailJS Response:', response);
 
-                if (result.success) {
-                    showEnhancedNotification(result.message || 'Thank you! We will contact you within 24 hours.', 'success');
+                if (response.status === 200) {
+                    showEnhancedNotification('Thank you! We will contact you within 24 hours.', 'success');
                     contactForm.reset();
 
                     // Clear all validations
@@ -285,12 +295,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 3000);
 
                 } else {
-                    showEnhancedNotification(result.message || 'Error sending message. Please try again.', 'error');
+                    showEnhancedNotification('Error sending message. Please try again.', 'error');
                 }
 
             } catch (error) {
-                showEnhancedNotification('Network error. Please try again later.', 'error');
-                console.error('Form submission error:', error);
+                showEnhancedNotification('Failed to send message. Please try calling us directly.', 'error');
+                console.error('EmailJS Error:', error);
             } finally {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
@@ -751,7 +761,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Enhanced utility functions
     window.WadhwaProperties = {
-        setTheme: window.setTheme,
         showNotification: showEnhancedNotification,
         formatPhoneNumber: function (phone) {
             const cleaned = phone.replace(/\D/g, '');
@@ -776,16 +785,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 500);
         }
     };
-
-    // Test theme toggle after initialization
-    setTimeout(() => {
-        console.log('Testing theme system...');
-        const themeToggle = document.getElementById('theme-switch');
-        if (themeToggle) {
-            console.log('Theme toggle found, system ready');
-            showEnhancedNotification('Website loaded with refreshed Royal Blue & Teal color scheme!', 'success', 3000);
-        }
-    }, 2000);
 
     // Console welcome message
     console.log('%c🏠 Welcome to Wadhwa Properties!', 'color: #6366f1; font-size: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);');

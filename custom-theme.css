@@ -556,16 +556,6 @@ section:nth-child(even) {
     box-shadow: 0 16px 48px rgba(99, 102, 241, 0.5) !important;
 }
 
-/* THEME TOGGLE */
-.theme-switch-slider {
-    background: var(--color-bg-elevated) !important;
-    border: var(--border-subtle) !important;
-}
-
-.theme-switch-input:checked+.theme-switch-label .theme-switch-slider {
-    background: var(--gradient-primary) !important;
-}
-
 /* NOTIFICATIONS */
 .notification {
     border-radius: 16px !important;
